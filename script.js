@@ -40,9 +40,8 @@ function initializeApp() {
     // Start background image slideshow
     startBackgroundSlideshow();
 
-    // Add popping stars and floating balloons
-    addStars();
-    addBalloons();
+    // Add popping flowers from corners
+    addPoppingFlowers();
 }
 
 function startBackgroundSlideshow() {
@@ -68,30 +67,40 @@ function startBackgroundSlideshow() {
     setInterval(changeBackground, 5000);
 }
 
-function addStars() {
-    const numberOfStars = 50;
-    for (let i = 0; i < numberOfStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        document.body.appendChild(star);
+function addPoppingFlowers() {
+    const numberOfFlowers = 8;
+    const flowerEmojis = ['🌸', '🌼', '🌺', '🌻', '🌷', '🌹'];
+    
+    // Create flowers from top-left corner
+    for (let i = 0; i < numberOfFlowers / 2; i++) {
+        createFlower(true, flowerEmojis);
+    }
+    
+    // Create flowers from top-right corner
+    for (let i = 0; i < numberOfFlowers / 2; i++) {
+        createFlower(false, flowerEmojis);
     }
 }
 
-function addBalloons() {
-    const numberOfBalloons = 10;
-    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff'];
+function createFlower(isLeftCorner, flowerEmojis) {
+    const flower = document.createElement('div');
+    flower.className = 'popping-flower';
+    flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
     
-    for (let i = 0; i < numberOfBalloons; i++) {
-        const balloon = document.createElement('div');
-        balloon.className = 'balloon';
-        balloon.style.left = Math.random() * 100 + '%';
-        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        balloon.style.animationDelay = Math.random() * 5 + 's';
-        document.body.appendChild(balloon);
+    if (isLeftCorner) {
+        flower.style.left = '20px';
+    } else {
+        flower.style.right = '20px';
     }
+    
+    flower.style.animationDelay = Math.random() * 3 + 's';
+    document.body.appendChild(flower);
+    
+    // Recreate flower after animation completes
+    setTimeout(() => {
+        flower.remove();
+        createFlower(isLeftCorner, flowerEmojis);
+    }, 4000);
 }
 
 // Friends messages functionality
@@ -241,47 +250,29 @@ style.textContent = `
         to { transform: translateX(100%); opacity: 0; }
     }
 
-    .star {
+    .popping-flower {
         position: fixed;
-        width: 2px;
-        height: 2px;
-        background: white;
-        border-radius: 50%;
-        animation: twinkle 2s infinite;
+        top: -50px;
+        font-size: 2rem;
+        animation: popFlower 4s ease-out forwards;
         pointer-events: none;
         z-index: 9999;
+        opacity: 0;
     }
 
-    @keyframes twinkle {
-        0%, 100% { opacity: 0; transform: scale(0); }
-        50% { opacity: 1; transform: scale(1); }
-    }
-
-    .balloon {
-        position: fixed;
-        bottom: -100px;
-        width: 30px;
-        height: 40px;
-        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-        animation: float 10s infinite linear;
-        pointer-events: none;
-        z-index: 9999;
-    }
-
-    .balloon::before {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 20px;
-        background: rgba(0, 0, 0, 0.3);
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0) rotate(0deg); }
-        100% { transform: translateY(-120vh) rotate(360deg); }
+    @keyframes popFlower {
+        0% {
+            opacity: 1;
+            transform: translateY(0) scale(0.5) rotate(0deg);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(100px) scale(1.2) rotate(15deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(500px) scale(0.3) rotate(360deg);
+        }
     }
 `;
 document.head.appendChild(style);
