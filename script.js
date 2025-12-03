@@ -52,18 +52,19 @@ function startBackgroundSlideshow() {
         'assets/images/mom2.jpg',
         'assets/images/mom3.jpg',
         'assets/images/mom4.jpg'
-        // Add more image paths as needed
     ];
 
     let currentIndex = 0;
 
     function changeBackground() {
-        hero.style.backgroundImage = `url('${images[currentIndex]}')`;
+        const imageUrl = images[currentIndex];
+        hero.style.backgroundImage = `url('${imageUrl}')`;
+        console.log('Changing to:', imageUrl);
         currentIndex = (currentIndex + 1) % images.length;
     }
 
-    // Change background every 5 seconds
-    changeBackground(); // Set initial
+    // Change background immediately and then every 5 seconds
+    changeBackground();
     setInterval(changeBackground, 5000);
 }
 
