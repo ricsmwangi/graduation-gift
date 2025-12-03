@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if it's December 5, 2025
+    // Check if it's December 3, 2025 (for final viewing)
     const now = new Date();
-    // Force check for December 5, 2025
-    const targetDate = new Date('2025-12-05T00:00:00Z');
+    // Force check for December 3, 2025
     const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const targetCheck = new Date(2025, 11, 5); // December is month 11
+    const targetCheck = new Date(2025, 11, 3); // December 3
     
     const isAvailable = currentDate.getTime() === targetCheck.getTime();
 
