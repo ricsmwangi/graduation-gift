@@ -13,12 +13,80 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #87CEEB 0%, #E6F3FF 25%, #B4E7F5 50%, #E6D7E6 75%, #D2B48C 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background: linear-gradient(135deg, #87CEEB 0%, #E6F3FF 25%, #B4E7F5 50%, #E6D7E6 75%, #D2B48C 100%);
+            }
+            25% {
+                background: linear-gradient(135deg, #E6F3FF 0%, #B4E7F5 25%, #E6D7E6 50%, #D2B48C 75%, #87CEEB 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, #B4E7F5 0%, #E6D7E6 25%, #D2B48C 50%, #87CEEB 75%, #E6F3FF 100%);
+            }
+            75% {
+                background: linear-gradient(135deg, #E6D7E6 0%, #D2B48C 25%, #87CEEB 50%, #E6F3FF 75%, #B4E7F5 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, #87CEEB 0%, #E6F3FF 25%, #B4E7F5 50%, #E6D7E6 75%, #D2B48C 100%);
+            }
+        }
+
+        /* Clouds Container */
+        .clouds-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 100px;
+            opacity: 0.6;
+            animation: cloudFloat 20s linear infinite;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 100px;
+        }
+
+        .cloud::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 10px;
+        }
+
+        .cloud::after {
+            width: 60px;
+            height: 60px;
+            top: -30px;
+            right: 10px;
+        }
+
+        @keyframes cloudFloat {
+            0% { transform: translateX(-100vw) translateY(0); opacity: 0; }
+            5% { opacity: 0.6; }
+            95% { opacity: 0.6; }
+            100% { transform: translateX(100vw) translateY(30px); opacity: 0; }
         }
 
         .card-carousel {
@@ -27,16 +95,17 @@
             max-width: 500px;
             height: 600px;
             perspective: 1000px;
+            z-index: 10;
         }
 
         .card {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #a8edea 100%);
+            background: linear-gradient(135deg, #E6F3FF 0%, #F0FFFF 50%, #F0FFF0 100%);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(135, 206, 235, 0.3);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -46,6 +115,30 @@
             transform: translateX(100%);
             transition: all 0.6s ease-in-out;
             overflow: hidden;
+            animation: cardColorCycle 12s ease infinite;
+        }
+
+        @keyframes cardColorCycle {
+            0% {
+                background: linear-gradient(135deg, #E6F3FF 0%, #F0FFFF 50%, #F0FFF0 100%);
+                box-shadow: 0 20px 60px rgba(135, 206, 235, 0.3);
+            }
+            25% {
+                background: linear-gradient(135deg, #F0FFF0 0%, #F0E6FF 50%, #E6F3FF 100%);
+                box-shadow: 0 20px 60px rgba(144, 238, 144, 0.3);
+            }
+            50% {
+                background: linear-gradient(135deg, #F0E6FF 0%, #FFF8DC 50%, #F0FFF0 100%);
+                box-shadow: 0 20px 60px rgba(221, 160, 221, 0.3);
+            }
+            75% {
+                background: linear-gradient(135deg, #FFF8DC 0%, #E6F3FF 50%, #F0E6FF 100%);
+                box-shadow: 0 20px 60px rgba(210, 180, 140, 0.3);
+            }
+            100% {
+                background: linear-gradient(135deg, #E6F3FF 0%, #F0FFFF 50%, #F0FFF0 100%);
+                box-shadow: 0 20px 60px rgba(135, 206, 235, 0.3);
+            }
         }
 
         .card.active {
@@ -77,23 +170,49 @@
 
         h1 {
             font-size: 2rem;
-            color: #2c3e50;
+            animation: headingColorCycle 12s ease infinite;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        @keyframes headingColorCycle {
+            0% { color: #87CEEB; }
+            25% { color: #90EE90; }
+            50% { color: #DDA0DD; }
+            75% { color: #D2B48C; }
+            100% { color: #87CEEB; }
+        }
+
         .subtitle {
             font-size: 1rem;
-            color: #555;
+            animation: subtitleColorCycle 12s ease infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes subtitleColorCycle {
+            0% { color: #90EE90; }
+            25% { color: #DDA0DD; }
+            50% { color: #D2B48C; }
+            75% { color: #87CEEB; }
+            100% { color: #90EE90; }
+        }
             margin-bottom: 20px;
             font-style: italic;
         }
 
         .message {
             font-size: 0.95rem;
-            color: #2c3e50;
+            animation: messageColorCycle 12s ease infinite;
             line-height: 1.6;
             margin-bottom: 20px;
+        }
+
+        @keyframes messageColorCycle {
+            0% { color: #333; }
+            25% { color: #333; }
+            50% { color: #333; }
+            75% { color: #333; }
+            100% { color: #333; }
         }
 
         .link-box {
@@ -101,22 +220,40 @@
             border-radius: 12px;
             padding: 15px;
             margin: 20px 0;
-            border: 2px solid #ffd700;
+            border: 2px solid #87CEEB;
+            animation: linkBoxColorCycle 12s ease infinite;
+        }
+
+        @keyframes linkBoxColorCycle {
+            0% { border-color: #87CEEB; }
+            25% { border-color: #90EE90; }
+            50% { border-color: #DDA0DD; }
+            75% { border-color: #D2B48C; }
+            100% { border-color: #87CEEB; }
         }
 
         .link-text {
             font-size: 0.85rem;
-            color: #666;
+            animation: linkTextColorCycle 12s ease infinite;
             margin-bottom: 10px;
             font-weight: bold;
         }
 
+        @keyframes linkTextColorCycle {
+            0% { color: #87CEEB; }
+            25% { color: #90EE90; }
+            50% { color: #DDA0DD; }
+            75% { color: #D2B48C; }
+            100% { color: #87CEEB; }
+        }
+
         .gift-link {
             display: inline-block;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #87CEEB, #90EE90);
             color: white;
             padding: 10px 20px;
             border-radius: 50px;
+            animation: linkColorCycle 12s ease infinite;
             text-decoration: none;
             font-weight: bold;
             font-size: 0.9rem;
@@ -129,11 +266,19 @@
             transform: scale(1.05);
         }
 
+        @keyframes linkColorCycle {
+            0% { background: linear-gradient(45deg, #87CEEB, #90EE90); }
+            25% { background: linear-gradient(45deg, #90EE90, #DDA0DD); }
+            50% { background: linear-gradient(45deg, #DDA0DD, #D2B48C); }
+            75% { background: linear-gradient(45deg, #D2B48C, #87CEEB); }
+            100% { background: linear-gradient(45deg, #87CEEB, #90EE90); }
+        }
+
         .copy-btn {
             display: inline-block;
             margin-top: 8px;
-            background: #ffd700;
-            color: #2c3e50;
+            background: linear-gradient(45deg, #87CEEB, #90EE90);
+            color: white;
             border: none;
             padding: 8px 16px;
             border-radius: 20px;
@@ -141,10 +286,19 @@
             font-weight: bold;
             font-size: 0.85rem;
             transition: all 0.3s ease;
+            animation: buttonColorCycle 12s ease infinite;
+        }
+
+        @keyframes buttonColorCycle {
+            0% { background: linear-gradient(45deg, #87CEEB, #90EE90); }
+            25% { background: linear-gradient(45deg, #90EE90, #DDA0DD); }
+            50% { background: linear-gradient(45deg, #DDA0DD, #D2B48C); }
+            75% { background: linear-gradient(45deg, #D2B48C, #87CEEB); }
+            100% { background: linear-gradient(45deg, #87CEEB, #90EE90); }
         }
 
         .copy-btn:hover {
-            background: #ffed4e;
+            transform: scale(1.05);
         }
 
         .controls {
@@ -158,19 +312,27 @@
         }
 
         .btn {
-            background: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(45deg, #87CEEB, #90EE90);
             border: none;
             width: 45px;
             height: 45px;
             border-radius: 50%;
+            animation: navButtonColorCycle 12s ease infinite;
             cursor: pointer;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.2);
+        }
+
+        @keyframes navButtonColorCycle {
+            0% { background: linear-gradient(45deg, #87CEEB, #90EE90); }
+            25% { background: linear-gradient(45deg, #90EE90, #DDA0DD); }
+            50% { background: linear-gradient(45deg, #DDA0DD, #D2B48C); }
+            75% { background: linear-gradient(45deg, #D2B48C, #87CEEB); }
+            100% { background: linear-gradient(45deg, #87CEEB, #90EE90); }
         }
 
         .btn:hover {
-            background: white;
             transform: scale(1.1);
         }
 
@@ -188,7 +350,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(135, 206, 235, 0.5);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -197,6 +359,15 @@
             background: white;
             width: 30px;
             border-radius: 5px;
+            animation: dotColorCycle 12s ease infinite;
+        }
+
+        @keyframes dotColorCycle {
+            0% { background: rgba(135, 206, 235, 1); }
+            25% { background: rgba(144, 238, 144, 1); }
+            50% { background: rgba(221, 160, 221, 1); }
+            75% { background: rgba(210, 180, 140, 1); }
+            100% { background: rgba(135, 206, 235, 1); }
         }
 
         @media (max-width: 500px) {
@@ -220,6 +391,7 @@
     </style>
 </head>
 <body>
+    <div class="clouds-container" id="clouds-container"></div>
     <div class="card-carousel">
         <!-- Card 1: Intro -->
         <div class="card active">
@@ -340,6 +512,39 @@
             if (touchStartX - touchEndX > 50) nextCard();
             if (touchEndX - touchStartX > 50) prevCard();
         }, false);
+
+        // Generate clouds
+        generateClouds();
+
+        function generateClouds() {
+            const cloudsContainer = document.getElementById('clouds-container');
+            const numClouds = 8;
+            
+            for (let i = 0; i < numClouds; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                
+                // Random size
+                const size = Math.random() * 60 + 40;
+                cloud.style.width = size + 'px';
+                cloud.style.height = (size * 0.4) + 'px';
+                
+                // Random vertical position
+                cloud.style.top = Math.random() * 70 + 'px';
+                
+                // Random animation duration
+                const duration = Math.random() * 10 + 20;
+                cloud.style.animationDuration = duration + 's';
+                
+                // Random animation delay
+                cloud.style.animationDelay = Math.random() * 5 + 's';
+                
+                // Random opacity
+                cloud.style.opacity = Math.random() * 0.4 + 0.3;
+                
+                cloudsContainer.appendChild(cloud);
+            }
+        }
     </script>
 </body>
 </html>
