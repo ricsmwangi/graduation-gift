@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if it's December 5, 2025
+    // Check if it's December 3, 2025 (for testing - change to 5 after testing)
     const now = new Date();
-    const targetDate = new Date('2025-12-05');
+    const targetDate = new Date('2025-12-03');
     const isAvailable = now.toDateString() === targetDate.toDateString();
 
     if (!isAvailable) {
