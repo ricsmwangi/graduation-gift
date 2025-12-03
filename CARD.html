@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Graduation Gift Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 600px;
+            perspective: 1000px;
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #a8edea 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.6s ease-in-out;
+            overflow: hidden;
+        }
+
+        .card.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 10;
+        }
+
+        .card.prev {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        .card-content {
+            z-index: 1;
+            position: relative;
+        }
+
+        .emoji {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 0.95rem;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .link-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #ffd700;
+        }
+
+        .link-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .gift-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        .gift-link:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn {
+            display: inline-block;
+            margin-top: 8px;
+            background: #ffd700;
+            color: #2c3e50;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #ffed4e;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 20;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 30px 20px;
+                height: 550px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .emoji {
+                font-size: 3rem;
+            }
+
+            .message {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-carousel">
+        <!-- Card 1: Intro -->
+        <div class="card active">
+            <div class="card-content">
+                <div class="emoji">🎓</div>
+                <h1>Congratulations Mom!</h1>
+                <p class="subtitle">On Your Special Graduation</p>
+                <p class="message">
+                    I've created something special for you on this incredible day. 
+                    A beautiful digital celebration of your achievement!
+                </p>
+                <p style="font-size: 0.9rem; color: #666;">← Swipe to see more →</p>
+            </div>
+        </div>
+
+        <!-- Card 2: Gift Link -->
+        <div class="card">
+            <div class="card-content">
+                <div class="emoji">🎁</div>
+                <h1>Your Gift Awaits!</h1>
+                <p class="subtitle">December 5, 2025</p>
+                <div class="link-box">
+                    <div class="link-text">📍 Visit Your Celebration:</div>
+                    <a href="https://ricsmwangi.github.io/graduation-gift/" class="gift-link" target="_blank">
+                        See the Gift
+                    </a>
+                    <br>
+                    <button class="copy-btn" onclick="copyLink()">📋 Copy Link</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Instructions -->
+        <div class="card">
+            <div class="card-content">
+                <div class="emoji">✨</div>
+                <h1>How It Works</h1>
+                <p class="message">
+                    📸 See beautiful photos<br><br>
+                    💌 Add congratulations<br><br>
+                    🎊 Celebrate together<br><br>
+                    📧 Messages come to me
+                </p>
+                <p style="font-size: 0.85rem; color: #666; font-style: italic;">
+                    Share this with friends & family!
+                </p>
+            </div>
+        </div>
+
+        <!-- Card 4: Closing -->
+        <div class="card">
+            <div class="card-content">
+                <div class="emoji">💚</div>
+                <h1>Thank You</h1>
+                <p class="message">
+                    For being part of my journey.<br><br>
+                    Your love and support means everything to me.
+                </p>
+                <p style="font-size: 1.2rem; margin-top: 20px;">💕💖💗</p>
+            </div>
+        </div>
+
+        <!-- Dots Navigation -->
+        <div class="dots">
+            <div class="dot active" onclick="goToCard(0)"></div>
+            <div class="dot" onclick="goToCard(1)"></div>
+            <div class="dot" onclick="goToCard(2)"></div>
+            <div class="dot" onclick="goToCard(3)"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn" onclick="prevCard()">←</button>
+            <button class="btn" onclick="nextCard()">→</button>
+        </div>
+    </div>
+
+    <script>
+        let currentCard = 0;
+        const cards = document.querySelectorAll('.card');
+        const totalCards = cards.length;
+
+        function showCard(index) {
+            cards.forEach((card, i) => {
+                card.classList.remove('active', 'prev');
+                if (i === index) {
+                    card.classList.add('active');
+                } else if (i < index) {
+                    card.classList.add('prev');
+                }
+            });
+
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextCard() {
+            currentCard = (currentCard + 1) % totalCards;
+            showCard(currentCard);
+        }
+
+        function prevCard() {
+            currentCard = (currentCard - 1 + totalCards) % totalCards;
+            showCard(currentCard);
+        }
+
+        function goToCard(index) {
+            currentCard = index;
+            showCard(currentCard);
+        }
+
+        function copyLink() {
+            const link = "https://ricsmwangi.github.io/graduation-gift/";
+            navigator.clipboard.writeText(link).then(() => {
+                alert('✅ Link copied to clipboard!\n\nShare on WhatsApp, Email, or anywhere else!');
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextCard();
+            if (e.key === 'ArrowLeft') prevCard();
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.card-carousel').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.querySelector('.card-carousel').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) nextCard();
+            if (touchEndX - touchStartX > 50) prevCard();
+        }, false);
+    </script>
+</body>
+</html>
