@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Special Graduation Gift for Mom 🎓</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .floating-flowers {
+            position: fixed;
+            font-size: 3rem;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .flower1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .flower2 { top: 20%; right: 5%; animation-delay: 1s; }
+        .flower3 { bottom: 10%; left: 10%; animation-delay: 2s; }
+        .flower4 { bottom: 20%; right: 8%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .card-container {
+            perspective: 1000px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #a8edea 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .graduation-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .link-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 3px solid #ffd700;
+        }
+
+        .link-title {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .gift-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            word-break: break-all;
+            text-align: center;
+        }
+
+        .gift-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .copy-button {
+            display: inline-block;
+            margin-top: 15px;
+            background: #ffd700;
+            color: #2c3e50;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+        }
+
+        .copy-notification {
+            display: none;
+            margin-top: 10px;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .date-info {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .closing {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        .hearts {
+            font-size: 1.5rem;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.8);
+            border-left: 5px solid #ffd700;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 0.95rem;
+            color: #2c3e50;
+        }
+
+        .instructions h3 {
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .graduation-emoji {
+                font-size: 3rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-flowers flower1">🌸</div>
+    <div class="floating-flowers flower2">🌼</div>
+    <div class="floating-flowers flower3">🌺</div>
+    <div class="floating-flowers flower4">🌻</div>
+
+    <div class="card-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="graduation-emoji">🎓</div>
+                
+                <h1>Congratulations on Your Graduation!</h1>
+                <p class="subtitle">A Special Gift Awaits You</p>
+
+                <div class="message">
+                    <p>Dear Mom,</p>
+                    <p style="margin-top: 15px;">
+                        On your special day, I've created something unique just for you. 
+                        A beautiful digital celebration where friends and family can share their love and congratulations.
+                    </p>
+                </div>
+
+                <div class="date-info">
+                    📅 Available: December 5, 2025
+                </div>
+
+                <div class="link-section">
+                    <div class="link-title">🎁 Your Special Graduation Gift Link:</div>
+                    <a href="https://ricsmwangi.github.io/graduation-gift/" class="gift-link" target="_blank">
+                        https://ricsmwangi.github.io/graduation-gift/
+                    </a>
+                    <br>
+                    <button class="copy-button" onclick="copyLink()">📋 Copy Link</button>
+                    <div class="copy-notification" id="copyNotif">✅ Link copied!</div>
+                </div>
+
+                <div class="instructions">
+                    <h3>📸 How to Share:</h3>
+                    <ol>
+                        <li><strong>On December 5th:</strong> The gift unlocks and goes live!</li>
+                        <li><strong>Share the link:</strong> Send it to friends and family via email, WhatsApp, or social media</li>
+                        <li><strong>They add messages:</strong> Visitors can leave congratulatory messages and see your beautiful photos</li>
+                        <li><strong>You receive emails:</strong> Every message is sent directly to your inbox</li>
+                        <li><strong>Celebrate together:</strong> See all the love and support pour in all day long</li>
+                    </ol>
+                </div>
+
+                <div class="closing">
+                    <div class="hearts">💚💕💖</div>
+                    <p style="margin-top: 15px;">With all my love,<br><strong>Your Proud Child</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyLink() {
+            const link = "https://ricsmwangi.github.io/graduation-gift/";
+            navigator.clipboard.writeText(link).then(() => {
+                const notif = document.getElementById('copyNotif');
+                notif.style.display = 'block';
+                setTimeout(() => {
+                    notif.style.display = 'none';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
