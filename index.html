@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Graduation Mom! 🎓❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1 class="title">🎓 Congratulations Mom! 🎓</h1>
+            <p class="subtitle">Your Graduate's Special Gift</p>
+            <div class="hearts">💖💕💗💓💞💘</div>
+        </header>
+
+        <section class="personal-message">
+            <h2>💌 My Message to You</h2>
+            <div class="message-card">
+                <p>Dear Mom,</p>
+                <p>Today is your graduation day, and even though I can't be there in person, my heart is with you every step of the way. You've worked so hard to achieve this milestone, and I'm incredibly proud of you.</p>
+                <p>You've always been my inspiration, my rock, and my biggest supporter. This achievement is just another testament to your strength, determination, and unwavering spirit.</p>
+                <p>While I couldn't make it to the ceremony, please know that I'm celebrating you from afar. You've earned every bit of this success, and I can't wait to hear all about it when we talk.</p>
+                <p>I love you more than words can express. Congratulations, Graduate! 🎓✨</p>
+                <p class="signature">With all my love,<br>Your Proud Child</p>
+            </div>
+        </section>
+
+        <section class="friends-messages">
+            <h2>👥 Messages from Friends & Family</h2>
+            <div class="add-message-form">
+                <h3>Add a Message</h3>
+                <form action="https://formspree.io/f/xpznqryq" method="POST" onsubmit="handleFormSubmit(event)">
+                    <input type="text" name="name" id="friend-name" placeholder="Your name" required>
+                    <textarea name="message" id="friend-message" placeholder="Write your congratulatory message..." required></textarea>
+                    <button type="submit" class="add-btn">Add Message</button>
+                </form>
+            </div>
+            <div id="messages-container" class="messages-container">
+                <!-- Messages will be added here -->
+            </div>
+        </section>
+
+        <section class="celebration">
+            <h2>🎉 Let's Celebrate!</h2>
+            <div class="celebration-content">
+                <p>Mom, you've accomplished something amazing! This is your moment to shine.</p>
+                <button onclick="celebrate()" class="celebrate-btn">🎊 Celebrate! 🎊</button>
+                <div id="celebration-effect" class="celebration-effect"></div>
+            </div>
+        </section>
+            <h2>🎉 Let's Celebrate!</h2>
+            <div class="celebration-content">
+                <p>Mom, you've accomplished something amazing! This is your moment to shine.</p>
+                <button onclick="celebrate()" class="celebrate-btn">🎊 Celebrate! 🎊</button>
+                <div id="celebration-effect" class="celebration-effect"></div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Made with ❤️ for the most amazing graduate</p>
+            <p>Happy Graduation Day! 🎓</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
