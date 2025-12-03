@@ -248,7 +248,7 @@ style.textContent = `
         border-radius: 50%;
         animation: twinkle 2s infinite;
         pointer-events: none;
-        z-index: 1;
+        z-index: 9999;
     }
 
     @keyframes twinkle {
@@ -264,7 +264,7 @@ style.textContent = `
         border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
         animation: float 10s infinite linear;
         pointer-events: none;
-        z-index: 1;
+        z-index: 9999;
     }
 
     .balloon::before {
