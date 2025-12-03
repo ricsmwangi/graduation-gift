@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Check if it's December 5, 2025 (for production)
     const now = new Date();
-    // Force check for December 5, 2025
-    const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const targetCheck = new Date(2025, 11, 5); // December 5
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const day = now.getDate();
     
-    const isAvailable = currentDate.getTime() === targetCheck.getTime();
-
-    if (!isAvailable) {
+    // Only allow on December 5, 2025
+    const isDecember5 = (year === 2025 && month === 11 && day === 5);
+    
+    if (!isDecember5) {
         showComingSoon();
         return;
     }
