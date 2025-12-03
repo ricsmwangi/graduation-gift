@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if it's December 3, 2025 (for testing - change to 5 after testing)
+    // Check if it's December 5, 2025
     const now = new Date();
-    const targetDate = new Date('2025-12-03');
+    const targetDate = new Date('2025-12-05');
     const isAvailable = now.toDateString() === targetDate.toDateString();
 
     if (!isAvailable) {
@@ -161,13 +161,10 @@ function saveMessageToStorage(name, message) {
 }
 
 function loadSavedData() {
-    // Load saved messages
-    const messages = JSON.parse(localStorage.getItem('graduationMessages') || '[]');
-    const container = document.getElementById('messages-container');
-
-    messages.forEach(msg => {
-        addMessageToDisplay(msg.name, msg.message);
-    });
+    // Clear any test data from localStorage
+    localStorage.removeItem('graduationMessages');
+    
+    // Messages will only be saved during the actual day
 }
 
 // Celebration functionality
