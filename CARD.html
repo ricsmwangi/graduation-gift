@@ -451,6 +451,45 @@
     </div>
 
     <script>
+        // Date lock - only allow on December 5, 2025
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth();
+        const day = now.getDate();
+        
+        const isDecember5 = (year === 2025 && month === 11 && day === 5);
+        
+        if (!isDecember5) {
+            document.body.innerHTML = `
+                <div style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100vh;
+                    background: linear-gradient(135deg, #87CEEB 0%, #E6F3FF 25%, #B4E7F5 50%, #E6D7E6 75%, #D2B48C 100%);
+                    background-size: 400% 400%;
+                    animation: gradientShift 12s ease infinite;
+                    color: white;
+                    text-align: center;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                ">
+                    <h1 style="font-size: 3rem; margin-bottom: 20px;">🎓 Coming Soon! 🎓</h1>
+                    <p style="font-size: 1.5rem; margin-bottom: 40px;">This special gift will be available on December 5, 2025</p>
+                    <div style="font-size: 4rem;">✨🎈🎊</div>
+                    <style>
+                        @keyframes gradientShift {
+                            0% { background: linear-gradient(135deg, #87CEEB 0%, #E6F3FF 25%, #B4E7F5 50%, #E6D7E6 75%, #D2B48C 100%); }
+                            25% { background: linear-gradient(135deg, #E6F3FF 0%, #B4E7F5 25%, #E6D7E6 50%, #D2B48C 75%, #87CEEB 100%); }
+                            50% { background: linear-gradient(135deg, #B4E7F5 0%, #E6D7E6 25%, #D2B48C 50%, #87CEEB 75%, #E6F3FF 100%); }
+                            75% { background: linear-gradient(135deg, #E6D7E6 0%, #D2B48C 25%, #87CEEB 50%, #E6F3FF 75%, #B4E7F5 100%); }
+                            100% { background: linear-gradient(135deg, #87CEEB 0%, #E6F3FF 25%, #B4E7F5 50%, #E6D7E6 75%, #D2B48C 100%); }
+                        }
+                    </style>
+                </div>
+            `;
+        }
+        
         let currentCard = 0;
         const cards = document.querySelectorAll('.card');
         const totalCards = cards.length;
